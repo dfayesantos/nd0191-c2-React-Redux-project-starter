@@ -21,7 +21,6 @@ const QuestionPage = (props) => {
       <Question id={props.id} />
       {/* <NewTweet id={props.id} /> */}
       <h2 className="center">Would You Rather</h2>
-      {console.log(props)}
       <h3 className="center">{props.question.optionOne.text}</h3>
       <ul>
         {props.question.optionOne.votes.length !== 0 && props.question.optionOne.votes.map((user) => (

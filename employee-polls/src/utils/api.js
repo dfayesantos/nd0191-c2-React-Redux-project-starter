@@ -1,11 +1,10 @@
 import {
-    _getUsers,
     _getTweets,
     _saveLikeToggle,
     _saveTweet,
   } from './_DATA.js'
   
-import { _getQuestions } from './_DATA2.js'
+import { _getUsers, _getQuestions, _saveQuestion } from './_DATA2.js'
   
   
   export function getInitialData () {
@@ -27,3 +26,8 @@ import { _getQuestions } from './_DATA2.js'
   export function saveTweet (info) {
     return _saveTweet(info)
   }
+
+  export function saveQuestion (info) {
+    return _saveQuestion(info)
+  }
+  

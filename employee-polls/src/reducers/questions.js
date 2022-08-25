@@ -1,4 +1,4 @@
-import { RECEIVE_QUESTIONS } from "../actions/questions";
+import { RECEIVE_QUESTIONS, ADD_QUESTION } from "../actions/questions";
 
 export default function questions(state = {}, action) {
   switch (action.type) {
@@ -20,8 +20,8 @@ export default function questions(state = {}, action) {
     //           : state[action.id].likes.concat([action.authedUser]),
     //     },
     //   };
-    // case ADD_TWEET:
-    //   const { tweet } = action;
+    case ADD_QUESTION:
+      const { question } = action;
 
     //   let replyingTo = {};
     //   if (tweet.replyingTo !== null) {
@@ -33,11 +33,11 @@ export default function questions(state = {}, action) {
     //     };
     //   }
 
-    //   return {
-    //     ...state,
-    //     [action.tweet.id]: action.tweet,
-    //     ...replyingTo,
-    //   };
+      return {
+        ...state,
+        [action.question.id]: action.question,
+        // ...replyingTo,
+      };
     default:
       return state;
   }

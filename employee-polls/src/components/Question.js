@@ -29,7 +29,6 @@ const Question = (props) => {
   if (props.question === null) {
     return <p>This Tweet doesn't exist</p>;
   }
-console.log(props.question)
   const {
     timestamp,
     optionOne,
