@@ -190,3 +190,20 @@ li {
   color: #c3392a;
 }
 
+.login-password {
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  font-family: sans-serif;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: start;
+  text-size-adjust: 100%;
+  width: 308px;
+  height: 36px;
+  border-color: rgb(204, 204, 204);
+  border-width: 1px;
+  border-radius: 4px;
+  text-indent: 10px;
+  color: rgb(204, 204, 204);
+}
