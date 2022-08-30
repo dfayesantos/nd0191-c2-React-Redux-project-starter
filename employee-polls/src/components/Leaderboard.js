@@ -10,7 +10,8 @@ const Leaderboard= (props) => {
     <div>
         {props.users.map(user => {
             return (
-            <div key={user.id} className="tweet">
+            <div key={user.id} className="question">
+            <img src={user.avatarURL} alt={`Avatar of ${user.name}`} className="avatar" />
             <div className="question-info">
               <div>
               <span>{user.name}</span>
@@ -20,6 +21,10 @@ const Leaderboard= (props) => {
               <div>Answers: {Object.keys(user.answers).length}</div>
               </div>
             </div>
+              <div className="question-info">
+                <div>Total Score:</div>
+                <div>{String(user.questions.length + user.answers.length)}</div>
+              </div>
             </div>
             )
         })}

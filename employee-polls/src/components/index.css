@@ -16,8 +16,28 @@ a {
   padding: 5%;
 }
 
+.button-column {
+  float: left;
+  width: 200px;
+  padding: 5px;
+}
+
+.button {
+  display: inline;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.button-voted {
+  background-color: greenyellow;
+  display: inline;
+  width: 200px;
+  margin: 0 auto;
+
+}
+
 /* Clear floats after the columns */
-.row:after {
+.dashboard-row:after {
   content: "";
   display: table;
   clear: both;
@@ -102,7 +122,7 @@ li {
   margin: 10px;
 }
 
-.tweet {
+.question {
   width: 100%;
   max-width: 590px;
   padding: 10px;

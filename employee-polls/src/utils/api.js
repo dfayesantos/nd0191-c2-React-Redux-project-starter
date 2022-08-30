@@ -4,7 +4,7 @@ import {
     _saveTweet,
   } from './_DATA.js'
   
-import { _getUsers, _getQuestions, _saveQuestion } from './_DATA2.js'
+import { _getUsers, _getQuestions, _saveQuestion, _saveQuestionAnswer } from './_DATA2.js'
   
   
   export function getInitialData () {
@@ -31,3 +31,10 @@ import { _getUsers, _getQuestions, _saveQuestion } from './_DATA2.js'
     return _saveQuestion(info)
   }
   
+  export function saveQuestionAnswer(authedUser, answer, qid) {
+    return _saveQuestionAnswer({
+        authedUser,
+        qid,
+        answer
+    });
+}

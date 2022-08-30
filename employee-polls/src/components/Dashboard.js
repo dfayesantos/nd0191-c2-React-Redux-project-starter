@@ -1,17 +1,17 @@
 import { connect } from "react-redux";
-import Tweet from "./Tweet";
 import Question from "./Question";
 import { isExpired} from "../utils/helpers";
+import questions from "../reducers/questions";
 
 const Dashboard = (props) => {
   return (
-    <div className="row">
+    <div className="dashboard-row">
         <div className="column">
         <h3 className="center">New Questions</h3>
       <ul className="dashboard-list">
         {props.questionIds.filter((id)=> !isExpired(props.questions[id].timestamp)).map((id) => (
           <li key={id}>
-            <Question id={id} />
+            <Question id={id} avatar={props.users[props.questions?.[id]?.author].avatarURL}/>
           </li>
         ))}
       </ul>
@@ -21,7 +21,7 @@ const Dashboard = (props) => {
       <ul className="dashboard-list">
         {props.questionIds.filter((id)=> isExpired(props.questions[id].timestamp)).map((id) => (
           <li key={id}>
-            <Question id={id} />
+            <Question id={id} avatar={props.users[props.questions?.[id]?.author].avatarURL} />
           </li>
         ))}
       </ul>
@@ -38,14 +38,15 @@ const Dashboard = (props) => {
   );
 };
 
-const mapStateToProps = ({ questions }) =>
+const mapStateToProps = ({ questions, users }) =>
 {
   
     return {
         questionIds: Object.keys(questions).sort(
         (a, b) => questions[b].timestamp - questions[a].timestamp
         ),
-        questions: questions
+        questions: questions,
+        users
     };
   };
 // (

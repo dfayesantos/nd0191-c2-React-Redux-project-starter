@@ -1,8 +1,8 @@
-import { saveTweet, saveQuestion } from "../utils/api";
+import { saveTweet, saveQuestion, saveQuestionAnswer} from "../utils/api";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
-import { addUserQuestion } from "./users";
+import { addUserQuestion, addUserAnswer} from "./users";
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
-export const TOGGLE_TWEET = "TOGGLE_TWEET";
+export const ADD_ANSWER_QUESTION = "ADD_ANSWER_QUESTION"
 export const ADD_QUESTION = "ADD_QUESTION";
 
 function addQuestion(question) {
@@ -21,12 +21,33 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
     return saveQuestion({
       optionOneText,
       optionTwoText,
-      author: authedUser
+      author: authedUser?.id
     })
       .then((question) => {dispatch(addQuestion(question));
-                          dispatch(addUserQuestion({authedUser, question}))
+                          dispatch(addUserQuestion(authedUser?.id, question))
         })
       .then(() => dispatch(hideLoading()));
+  };
+}
+
+function addAnswerQuestion(author, answer, questionId) {
+  return {
+      type: ADD_ANSWER_QUESTION,
+      author,
+      answer,
+      questionId,
+  };
+}
+
+
+export function handleAddAnswer(question, answer) {
+  return (dispatch, getState) => {
+      const { authedUser } = getState();
+      return saveQuestionAnswer(authedUser.id, answer, question)
+          .then(() => {
+              dispatch(addAnswerQuestion(authedUser.id, answer, question));
+              dispatch(addUserAnswer(authedUser.id, answer, question));
+          });
   };
 }
 
@@ -36,24 +57,3 @@ export function receiveQuestions(questions) {
     questions,
   };
 }
-
-// function toggleTweet({ id, authedUser, hasLiked }) {
-//   return {
-//     type: TOGGLE_TWEET,
-//     id,
-//     authedUser,
-//     hasLiked,
-//   };
-// }
-
-// export function handleToggleTweet(info) {
-//   return (dispatch) => {
-//     dispatch(toggleTweet(info));
-
-//     return saveLikeToggle(info).catch((e) => {
-//       console.warn("Error in handleToggleTweet: ", e);
-//       dispatch(toggleTweet(info));
-//       alert("The was an error liking the tweet. Try again.");
-//     });
-//   };
-// }

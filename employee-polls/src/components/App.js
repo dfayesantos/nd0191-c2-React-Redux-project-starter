@@ -4,12 +4,12 @@ import { handleInitialData } from "../actions/shared";
 import Dashboard from "./Dashboard";
 import LoadingBar from "react-redux-loading-bar";
 import Leaderboard from "./Leaderboard";
-import TweetPage from "./TweetPage";
 import QuestionPage from "./QuestionPage";
 import NewQuestion from "./NewQuestion";
 import Login from "./Login";
 import Error404 from "./Error404";
 import Nav from "./Nav";
+import PrivateRoute from "./PrivateRoute";
 import { Routes, Route } from "react-router-dom";
 
 const App = (props) => {
@@ -24,11 +24,10 @@ const App = (props) => {
         <Nav />
         {props.loading === true ? null : (
           <Routes>
-            <Route path="/" exact element={<Dashboard />} />
-            <Route path="/tweet/:id" element={<TweetPage />} />
-            <Route path="/questions/:id" element={<QuestionPage />} />
-            <Route path="/new" element={<NewQuestion />} />
-            <Route path="/Leaderboard" element={<Leaderboard />} />
+            <Route path="/" element={<PrivateRoute><Dashboard/></PrivateRoute>} />
+            <Route path="/questions/:id" element={<PrivateRoute><QuestionPage/></PrivateRoute>} />
+            <Route path="/new" element={<PrivateRoute><NewQuestion/></PrivateRoute>}/>
+            <Route path="/Leaderboard" element={<PrivateRoute><Leaderboard/></PrivateRoute>} />
             <Route path="/login" element={<Login/>} />
             <Route path="/404error" element={<Error404/>} />
           </Routes>
@@ -39,7 +38,8 @@ const App = (props) => {
 };
 
 const mapStateToProps = ({ authedUser }) => ({
-  loading: authedUser === null,
+  // loading: authedUser === null,
+  isAuthenticated: authedUser
 });
 
 export default connect(mapStateToProps)(App);

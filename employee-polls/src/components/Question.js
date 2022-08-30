@@ -1,12 +1,9 @@
 import { connect } from "react-redux";
 import { formatDate } from "../utils/helpers";
-import { formatQuestion } from "../utils/_DATA2"
-// import {
 //   TiArrowBackOutline,
 //   TiHeartOutline,
 //   TiHeartFullOutline,
 // } from "react-icons/ti";
-import { handleToggleTweet } from "../actions/tweets";
 import { useNavigate, Link } from "react-router-dom";
 
 const Question = (props) => {
@@ -31,14 +28,13 @@ const Question = (props) => {
   }
   const {
     timestamp,
-    optionOne,
-    optionTwo,
     id,
     author,
   } = props.question;
 
   return (
-    <Link to={`/questions/${id}`} className="tweet">
+    <Link to={`/questions/${id}`} className="question">
+      <img src={props.avatar} alt={`Avatar of ${author}`} className="avatar" />
       <div className="question-info">
         <div>
           <span>{author}</span>
@@ -63,6 +59,7 @@ const Question = (props) => {
 
 const mapStateToProps = ({ authedUser, users, questions }, { id }) => {
   const question = questions[id];
+
 
   return {
     authedUser,

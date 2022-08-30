@@ -1,6 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
+import {connect} from "react-redux";
+import { handleLogoutUser } from "../actions/authedUser";
 
-const Nav = () => {
+const Nav = ({dispatch, authedUser}) => {
+  const navigate = useNavigate()
+  const handleLogout = (e) => {
+    e.preventDefault();
+    dispatch(handleLogoutUser());
+    navigate('/login')
+};
   return (
     <nav className="nav">
       <ul>
@@ -13,9 +21,16 @@ const Nav = () => {
         <li>
           <Link to="/new">New Question</Link>
         </li>
+        {authedUser ? <li>
+          <Link to="/login" onClick={handleLogout}>Logout</Link>
+        </li> : <></>}
       </ul>
     </nav>
   );
 };
 
-export default Nav;
+const mapStateToProps = ({authedUser}) => ({
+  authedUser: authedUser
+});
+
+export default connect(mapStateToProps)(Nav);

@@ -1,9 +1,14 @@
+import avatar1 from '../pictures/profile1.png'
+import avatar2 from '../pictures/profile2.png'
+import avatar3 from '../pictures/profile3.png'
+import avatar4 from '../pictures/profile4.png'
+
 let users = {
   sarahedo: {
     id: 'sarahedo',
     password:'password123',
     name: 'Sarah Edo',
-    avatarURL: null,
+    avatarURL: avatar2,
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionOne',
@@ -15,8 +20,8 @@ let users = {
   tylermcginnis: {
     id: 'tylermcginnis',
     password:'abc321',
-    name: 'Tyler McGinnis',
-    avatarURL: null,
+    name: "Tyler McGinnis",
+    avatarURL: avatar1,
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -27,7 +32,7 @@ let users = {
     id: 'mtsamis',
     password:'xyz123',
     name: 'Mike Tsamis',
-    avatarURL: null,
+    avatarURL: avatar3,
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
@@ -39,7 +44,7 @@ let users = {
     id: 'zoshikanlu',
     password:'pass246',
     name: 'Zenobia Oshikanlu',
-    avatarURL: null,
+    avatarURL: avatar4,
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
     },
@@ -179,6 +184,7 @@ export function _saveQuestion (question) {
 }
 
 export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
+  console.log("HERE ", authedUser, qid, answer)
   return new Promise((resolve, reject) => {
     if (!authedUser || !qid || !answer) {
       reject("Please provide authedUser, qid, and answer");
