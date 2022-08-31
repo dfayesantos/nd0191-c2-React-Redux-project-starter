@@ -19,7 +19,7 @@ const Nav = ({dispatch, authedUser}) => {
           <Link to="/leaderboard">Leaderboard</Link>
         </li>
         <li>
-          <Link to="/new">New Question</Link>
+          <Link to="/add">New Question</Link>
         </li>
         {authedUser ? <li>
           <Link to="/login" onClick={handleLogout}>Logout</Link>

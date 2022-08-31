@@ -18,28 +18,16 @@ const Leaderboard= (props) => {
               <span></span>
               <div>{user.id}</div>
               <div>Questions: {user.questions.length}</div>
-              <div>Answers: {Object.keys(user.answers).length}</div>
+              <div>Answered: {Object.keys(user.answers).length}</div>
               </div>
             </div>
               <div className="question-info">
-                <div>Total Score:</div>
-                <div>{String(user.questions.length + user.answers.length)}</div>
+                {/* <div>Total Score:</div>
+                <div>{String(user.questions.length + user.answers.length)}</div> */}
               </div>
             </div>
             )
         })}
-        {/* <div className="tweet-icons">
-          <TiArrowBackOutline className="tweet-icon" />
-          <span>{replies !== 0 && replies}</span>
-          <button className="heart-button" onClick={handleLike}>
-            {hasLiked === true ? (
-              <TiHeartFullOutline color="#e0245e" className="tweet-icon" />
-            ) : (
-              <TiHeartOutline className="tweet-icon" />
-            )}
-          </button>
-          <span>{likes !== 0 && likes}</span>
-        </div> */}
       </div>
   );
 };

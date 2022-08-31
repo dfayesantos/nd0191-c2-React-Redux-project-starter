@@ -1,4 +1,3 @@
-import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 export const LOGOUT_USER = "LOGOUT_USER"
 export const SET_AUTHED_USER = "SET_AUTHED_USER";

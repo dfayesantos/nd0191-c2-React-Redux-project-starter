@@ -15,7 +15,7 @@ import { Routes, Route } from "react-router-dom";
 const App = (props) => {
   useEffect(() => {
     props.dispatch(handleInitialData());
-  }, []);
+  });
 
   return (
     <Fragment>
@@ -26,7 +26,7 @@ const App = (props) => {
           <Routes>
             <Route path="/" element={<PrivateRoute><Dashboard/></PrivateRoute>} />
             <Route path="/questions/:id" element={<PrivateRoute><QuestionPage/></PrivateRoute>} />
-            <Route path="/new" element={<PrivateRoute><NewQuestion/></PrivateRoute>}/>
+            <Route path="/add" element={<PrivateRoute><NewQuestion/></PrivateRoute>}/>
             <Route path="/Leaderboard" element={<PrivateRoute><Leaderboard/></PrivateRoute>} />
             <Route path="/login" element={<Login/>} />
             <Route path="/404error" element={<Error404/>} />
