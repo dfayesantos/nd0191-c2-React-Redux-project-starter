@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { useNavigate, Navigate} from "react-router-dom";
+import { Navigate} from "react-router-dom";
 import { useState } from "react";
 import Select from 'react-select';
 import { handleLoginUser } from "../actions/authedUser";
@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
 
 const Login= (props) => {
-const navigate = useNavigate();
 
   const [enteredPassword, setEnteredPassword] = useState("");
   const [username, setUsername] = useState("")

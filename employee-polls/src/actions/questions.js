@@ -1,4 +1,4 @@
-import { saveTweet, saveQuestion, saveQuestionAnswer} from "../utils/api";
+import { saveQuestion, saveQuestionAnswer} from "../utils/api";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
 import { addUserQuestion, addUserAnswer} from "./users";
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
