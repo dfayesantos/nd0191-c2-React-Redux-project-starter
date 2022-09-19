@@ -1,23 +1,21 @@
 const {_saveQuestionAnswer} = require("./_DATA");
 
 describe("_saveQuestionAnswer", () => {
-    it("should return true for correct parameters", async () => {
+    it("expected to return true", async () => {
         const response = await _saveQuestionAnswer({
-            authedUser: "sarahedo",
-            qid: "8xf0y6ziyjabvozdd253nd",
-            answer: "optionOne"
+            authedUser: "mtsamis",
+            qid: "vthrdm985a262al8qx3do",
+            answer: "optionTwo"
         });
-
         expect(response).toBeTruthy();
     });
 
-    it("should return error for false parameters", async () => {
+    it("expected to return error and reject", async () => {
         const response = await _saveQuestionAnswer({
-            authedUser: "sarahedo",
+            authedUser: "zoshikanlu",
             qid: undefined,
-            answer: "optionOne"
+            answer: "optionTwo"
         }).catch(e => e);
-
         expect(response).toBe("Please provide authedUser, qid, and answer");
     });
 });
