@@ -10,7 +10,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "start": "react-scripts start"
   },
   "eslintConfig": {
     "extends": [
