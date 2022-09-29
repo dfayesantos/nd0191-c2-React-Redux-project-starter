@@ -19,8 +19,8 @@ const Question = (props) => {
       <img src={props.avatar} alt={`Avatar of ${author}`} className="avatar" />
       <div className="question-info">
         <div>
-          <span>{author}</span>
-          <div>{formatDate(timestamp)}</div>
+          <span data-testid='author'>{author}</span>
+          <div data-testid='timestamp'>{formatDate(timestamp)}</div>
         </div>
       </div>
     </Link>

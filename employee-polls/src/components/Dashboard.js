@@ -13,7 +13,7 @@ const Dashboard = (props) => {
   }
   return (
     <div className="dashboard-row">
-      <h1 className="center">Welcome, {props.authedUser.id}</h1>
+      <h1 data-testid="authed-user" className="center">Welcome, {props.authedUser.id}</h1>
         <div className="column">
         <h3 className="center">Unanswered</h3>
       <ul className="dashboard-list">

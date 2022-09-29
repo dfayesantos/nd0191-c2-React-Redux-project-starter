@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
-import { Navigate} from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useState } from "react";
-import Select from 'react-select';
+import Select  from 'react-select';
 import { handleLoginUser } from "../actions/authedUser";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
@@ -38,7 +38,7 @@ const handleSubmit = (e) => {
         <div className="col-md-4">
             <h1>Welcome to Employee Polls! Login to get started.</h1>
             <span>Username</span>
-            <Select options={props.loggedUsers} onChange={(choice)=> setUsername(choice)} />
+            <Select data-testid={"username-dropdown"} options={props.loggedUsers} onChange={(choice)=> setUsername(choice)} />
         </div>
         <div className="col-md-4"></div>
         </div>
@@ -53,11 +53,12 @@ const handleSubmit = (e) => {
             value={enteredPassword}
             onChange={handlePasswordChange}
             className="login-password"
+            data-testid={"password-textarea"}
             />
         </div>
         <div className="col-md-4"></div>
         </div>
-        <button className="btn" type="submit" disabled={enteredPassword === "" || username === ""}>
+        <button data-testid={"login-submit"} className="btn" type="submit" disabled={enteredPassword === "" || username === ""}>
           Login
         </button>
     </form>

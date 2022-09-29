@@ -14,11 +14,11 @@ const Leaderboard= (props) => {
             <img src={user.avatarURL} alt={`Avatar of ${user.name}`} className="avatar" />
             <div className="question-info">
               <div>
-              <span>{user.name}</span>
+              <span data-testid={'username'}>{user.name}</span>
               <span></span>
               <div>{user.id}</div>
-              <div>Questions: {user.questions.length}</div>
-              <div>Answered: {Object.keys(user.answers).length}</div>
+              <div data-testid={'questions-length'}>Questions: {user.questions.length}</div>
+              <div data-testid={'answers-length'}>Answered: {Object.keys(user.answers).length}</div>
               </div>
             </div>
               <div className="question-info">

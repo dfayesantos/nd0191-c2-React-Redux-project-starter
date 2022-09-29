@@ -44,6 +44,7 @@ const NewQuestion = ({ dispatch, id }) => {
           onChange={handleChange}
           className="textarea"
           maxLength={280}
+          data-testid={'optionOne'}
         />
         {tweetLeft <= 100 && <div className="tweet-length">{tweetLeft}</div>}
         <textarea
@@ -52,9 +53,10 @@ const NewQuestion = ({ dispatch, id }) => {
           onChange={handleChange2}
           className="textarea"
           maxLength={280}
+          data-testid={'optionTwo'}
         />
         {tweetLeft2 <= 100 && <div className="tweet-length">{tweetLeft2}</div>}
-        <button className="btn" type="submit" disabled={text1 === "" || text2 ==="" }>
+        <button data-testid={'submitButton'} className="btn" type="submit" disabled={text1 === "" || text2 ==="" }>
           Submit
         </button>
       </form>
