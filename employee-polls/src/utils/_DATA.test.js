@@ -1,7 +1,7 @@
 const {_saveQuestionAnswer, _saveQuestion} = require("./_DATA");
 
 describe("_saveQuestion", () => {
-    it("expected to return true", async () => {
+    it("expected to return a new formatted question", async () => {
         const optionOneText = "walk to school"
         const optionTwoText = "bike to school"
         const author = 'zoshikanlu'
