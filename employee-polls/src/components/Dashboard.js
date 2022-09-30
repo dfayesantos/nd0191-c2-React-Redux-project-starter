@@ -21,7 +21,7 @@ const Dashboard = (props) => {
       <h1 data-testid="authed-user" className="center">Welcome, {props.authedUser.id}</h1>
       <div>
         <label>
-      <input type="checkbox" check={toggle} onChange={triggerToggle}/>{toggle ? ' Uncheck for answered questions' :' Check box for unanswered questions'} 
+      <input type="checkbox" checked={toggle} onChange={triggerToggle}/>{toggle ? ' Uncheck for answered questions' :' Check box for unanswered questions'} 
       </label>
       </div>
       {toggle ? <div className="column">
