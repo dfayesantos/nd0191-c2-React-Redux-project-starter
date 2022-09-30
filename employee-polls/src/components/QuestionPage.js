@@ -3,6 +3,16 @@ import Question from "./Question";
 import { handleAddAnswer } from "../actions/questions";
 import { useLocation, useNavigate, useParams, Navigate } from "react-router-dom";
 
+const withRouter = (Component) => {
+  const ComponentWithRouterProp = (props) => {
+    let location = useLocation();
+    let navigate = useNavigate();
+    let params = useParams();
+    return <Component {...props} router={{ location, navigate, params }} />;
+  };
+
+  return ComponentWithRouterProp;
+};
 
 const QuestionPage = (props) => {
   if (props?.question === undefined) {
@@ -89,17 +99,6 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 }
-
-const withRouter = (Component) => {
-  const ComponentWithRouterProp = (props) => {
-    let location = useLocation();
-    let navigate = useNavigate();
-    let params = useParams();
-    return <Component {...props} router={{ location, navigate, params }} />;
-  };
-
-  return ComponentWithRouterProp;
-};
 
 
 
