@@ -1,21 +1,14 @@
 import { connect } from "react-redux";
 import Question from "./Question";
 import { handleAddAnswer } from "../actions/questions";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-
-const withRouter = (Component) => {
-  const ComponentWithRouterProp = (props) => {
-    let location = useLocation();
-    let navigate = useNavigate();
-    let params = useParams();
-    return <Component {...props} router={{ location, navigate, params }} />;
-  };
-
-  return ComponentWithRouterProp;
-};
+import { useLocation, useNavigate, useParams, Navigate } from "react-router-dom";
 
 
 const QuestionPage = (props) => {
+  if (props?.question === undefined) {
+    return <Navigate to="/404error"/>;
+  }
+  
   const userVotedOptionOne = props.question.optionOne.votes.includes(props.authedUser.id)
   const userVotedOptionTwo = props.question.optionTwo.votes.includes(props.authedUser.id)
   const userVoted = userVotedOptionOne || userVotedOptionTwo
@@ -39,7 +32,6 @@ const QuestionPage = (props) => {
     e.preventDefault();
     props.handleSubmitAnswerTwo(props.question.id)
   };
-  
   
   return (
     <div className="center">
@@ -97,5 +89,18 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 }
+
+const withRouter = (Component) => {
+  const ComponentWithRouterProp = (props) => {
+    let location = useLocation();
+    let navigate = useNavigate();
+    let params = useParams();
+    return <Component {...props} router={{ location, navigate, params }} />;
+  };
+
+  return ComponentWithRouterProp;
+};
+
+
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(QuestionPage));
