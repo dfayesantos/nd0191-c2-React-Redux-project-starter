@@ -21,10 +21,10 @@ const Dashboard = (props) => {
       <h1 data-testid="authed-user" className="center">Welcome, {props.authedUser.id}</h1>
       <div>
         <label>
-      <input type="checkbox" checked={toggle} onChange={triggerToggle}/>{toggle ? ' Uncheck for answered questions' :' Check box for unanswered questions'} 
+      <input type="checkbox" checked={toggle} onChange={triggerToggle}/>{!toggle ? ' Check for answered questions' :' Uncheck box for unanswered questions'} 
       </label>
       </div>
-      {toggle ? <div className="column">
+      {!toggle ? <div className="column">
         <h3 className="center">Unanswered</h3>
       <ul className="dashboard-list">
         {props.questionIds.filter((id)=> !isDone(id)).map((id) => (
