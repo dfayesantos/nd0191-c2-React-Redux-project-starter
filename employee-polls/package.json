@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@testing-library/user-event": "^13.5.0",
+    "bootstrap": "^5.2.1",
     "loading-bar": "0.0.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -12,6 +13,8 @@
     "react-router-dom": "^6.4.1",
     "react-scripts": "^5.0.1",
     "react-select": "^5.4.0",
+    "redux": "^4.2.0",
+    "redux-thunk": "^2.4.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
