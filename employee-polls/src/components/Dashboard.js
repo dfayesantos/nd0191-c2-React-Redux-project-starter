@@ -1,7 +1,12 @@
 import { connect } from "react-redux";
+import { useState } from "react";
 import Question from "./Question";
 
 const Dashboard = (props) => {
+  const [toggle, setToggle] = useState(false);
+  const triggerToggle = () => {
+    setToggle(!toggle);
+  }
   const isDone = (questionId) => {
     const userVotedOptionOne = props.questions[questionId].optionOne.votes.includes(props.authedUser.id)
     const userVotedOptionTwo = props.questions[questionId].optionTwo.votes.includes(props.authedUser.id)
@@ -14,7 +19,12 @@ const Dashboard = (props) => {
   return (
     <div className="dashboard-row">
       <h1 data-testid="authed-user" className="center">Welcome, {props.authedUser.id}</h1>
-        <div className="column">
+      <div>
+        <label>
+      <input type="checkbox" check={toggle} onChange={triggerToggle}/>{toggle ? ' Uncheck for answered questions' :' Check box for unanswered questions'} 
+      </label>
+      </div>
+      {toggle ? <div className="column">
         <h3 className="center">Unanswered</h3>
       <ul className="dashboard-list">
         {props.questionIds.filter((id)=> !isDone(id)).map((id) => (
@@ -23,7 +33,7 @@ const Dashboard = (props) => {
           </li>
         ))}
       </ul>
-      </div>
+      </div> : 
       <div className="column">
         <h3 className="center">Answered</h3>
       <ul className="dashboard-list">
@@ -34,8 +44,9 @@ const Dashboard = (props) => {
         ))}
       </ul>
       </div>
-    </div>
-  );
+      }
+      </div>
+      );
 };
 
 const mapStateToProps = ({ authedUser, questions, users }) =>
